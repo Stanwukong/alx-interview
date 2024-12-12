@@ -30,7 +30,7 @@ def play_round(n):
         if not curr_primes:
             return 'Ben' if is_maria_turn else 'Maria'
 
-        prime = min(curr_prime)
+        prime = min(curr_primes)
         numbers = {num for num in numbers if num % prime != 0}
 
         is_maria_turn = not is_maria_turn
@@ -47,7 +47,7 @@ def isWinner(x, nums):
     nums = nums[:x]
 
     maria_wins = sum(play_round(n) == 'Maria' for n in nums)
-    ben_wins = sum(play_rounds(n) == 'Ben' for n in nums)
+    ben_wins = sum(play_round(n) == 'Ben' for n in nums)
 
     if maria_wins > ben_wins:
         return 'Maria'
